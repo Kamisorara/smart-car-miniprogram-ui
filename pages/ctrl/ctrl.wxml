@@ -1,0 +1,154 @@
+<view class="dashboard-container">
+  <!-- 顶部状态栏 -->
+  <view class="status-bar">
+    <!-- WiFi连接状态 -->
+    <view class="status-item">
+      <view class="status-icon">
+        <image src="{{chargt ? '../../static/image/热点未连接.png' : '../../static/image/热点连接成功.png'}}" 
+               class="icon-image"></image>
+      </view>
+      <text class="status-text">{{chargt ? '未连接' : '已连接'}}</text>
+    </view>
+
+    <!-- 电量显示 -->
+    <view class="battery-section">
+      <view class="battery-container">
+        <view class="battery-level" style="width: {{Value.power}}%"></view>
+      </view>
+      <text class="battery-text">{{Value.power}}%</text>
+    </view>
+
+    <!-- NFC配网 -->
+    <view class="status-item" bindtap="onGotoNfc">
+      <view class="status-icon">
+        <image src="../../static/image/nfc未配网.png" class="icon-image"></image>
+      </view>
+      <text class="status-text">配网</text>
+    </view>
+  </view>
+
+  <!-- 主要内容区域 -->
+  <view class="main-content">
+    <!-- 上方信息区域 -->
+    <view class="top-info-section">
+      <!-- 左侧控制面板 -->
+      <view class="left-panel">
+        <!-- 车辆信息面板 -->
+        <view class="info-panel">
+          <view class="info-item">
+            <view class="info-value">{{Value.speed}}</view>
+            <view class="info-label">速度 km/h</view>
+          </view>
+          <view class="info-item">
+            <view class="info-value">{{temp}}</view>
+            <view class="info-label">温度 °C</view>
+          </view>
+          <view class="info-item">
+            <view class="info-value">{{humi}}</view>
+            <view class="info-label">湿度 %</view>
+          </view>
+        </view>
+
+        <!-- IP地址输入 -->
+        <view class="ip-section">
+          <view class="ip-container">
+            <view class="ip-icon">🌐</view>
+            <input class="ip-input" 
+                   bind:change="onChangeSetCarIp"
+                   placeholder="输入小车IP地址" 
+                   type="text" />
+          </view>
+        </view>
+      </view>
+
+      <!-- 右侧控制开关区域 -->
+      <view class="control-switches">
+        <view class="switch-row">
+          <view class="switch-item">
+            <view class="switch-icon">🔥</view>
+            <text class="switch-label">风扇</text>
+            <switch color="#667eea" bindchange="onButtonFan"></switch>
+          </view>
+          <view class="switch-item">
+            <view class="switch-icon">🔔</view>
+            <text class="switch-label">蜂鸣器</text>
+            <switch color="#667eea" bindchange="onButtonBuzzer"></switch>
+          </view>
+        </view>
+        <view class="switch-row">
+          <view class="switch-item">
+            <view class="switch-icon">💡</view>
+            <text class="switch-label">LED</text>
+            <switch color="#667eea" bindchange="onButtonLed"></switch>
+          </view>
+          <view class="switch-item">
+            <view class="switch-icon">🌈</view>
+            <text class="switch-label">RGB</text>
+            <switch color="#667eea" bindchange="onButtonRgb"></switch>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部方向控制区域 -->
+    <view class="direction-control">
+      <text class="control-title">方向控制</text>
+      
+      <!-- 3x3网格布局的方向控制 -->
+      <view class="direction-grid">
+        <!-- 前进按钮 -->
+        <view class="direction-btn forward" 
+              bindtouchstart="onButtonTurnRunStart" 
+              bindtouchend="onButtonTurnRunEnd">
+          <view class="btn-content">
+            <view class="btn-icon">🔺</view>
+            <text class="btn-text">前进</text>
+          </view>
+        </view>
+
+        <!-- 左转按钮 -->
+        <view class="direction-btn left" 
+              bindtouchstart="onButtonTurnLeftStart" 
+              bindtouchend="onButtonTurnLeftEnd">
+          <view class="btn-content">
+            <view class="btn-icon">◀️</view>
+            <text class="btn-text">左转</text>
+          </view>
+        </view>
+        
+        <!-- 中央停止指示器 -->
+        <view class="center-indicator">
+          <view class="stop-icon">⏹️</view>
+          <view class="stop-text">STOP</view>
+        </view>
+        
+        <!-- 右转按钮 -->
+        <view class="direction-btn right" 
+              bindtouchstart="onButtonTurnRightStart" 
+              bindtouchend="onButtonTurnRightEnd">
+          <view class="btn-content">
+            <view class="btn-icon">▶️</view>
+            <text class="btn-text">右转</text>
+          </view>
+        </view>
+
+        <!-- 后退按钮 -->
+        <view class="direction-btn backward" 
+              bindtouchstart="onButtonTurnBackStart" 
+              bindtouchend="onButtonTurnBackEnd">
+          <view class="btn-content">
+            <view class="btn-icon">🔻</view>
+            <text class="btn-text">后退</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 速度档位指示器 -->
+      <view class="speed-indicator">
+        <view class="speed-dot {{Value.gears == 0 ? 'active' : ''}}"></view>
+        <view class="speed-dot {{Value.gears == 1 ? 'active' : ''}}"></view>
+        <view class="speed-dot {{Value.gears == 2 ? 'active' : ''}}"></view>
+      </view>
+    </view>
+  </view>
+</view>

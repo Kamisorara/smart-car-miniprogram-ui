@@ -1,0 +1,81 @@
+<view class="page-container">
+  <!-- 顶部标题区 -->
+  <view class="header-section">
+    <view class="header-title">智能小车配网</view>
+    <view class="header-subtitle">连接您的设备到WiFi网络</view>
+  </view>
+
+  <!-- 主要内容区 -->
+  <view class="main-content">
+    <!-- 状态指示器 -->
+    <view class="status-indicator">
+      <view class="status-circle {{isdisabled ? 'active' : ''}}">
+        <image src="/static/image/nfc配网成功.png" class="status-icon" mode="aspectFit" />
+      </view>
+      <view class="status-text">{{isdisabled ? '正在配网中...' : '准备配网'}}</view>
+    </view>
+
+    <!-- 步骤指南 -->
+    <view class="steps-guide">
+      <view class="step-item" wx:for="{{steps}}" wx:key="index">
+        <view class="step-number">{{index + 1}}</view>
+        <view class="step-content">
+          <view class="step-title">{{item.text}}</view>
+          <view class="step-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- WiFi配置表单 -->
+    <view class="form-section">
+      <view class="form-title">WiFi配置</view>
+      
+      <view class="input-group">
+        <view class="input-label">
+          <image src="/static/image/we.png" class="input-icon" mode="aspectFit" />
+          <text>网络名称</text>
+        </view>
+        <view class="input-wrapper">
+          <input 
+            class="form-input" 
+            bindinput="onWifiSSIDInput" 
+            type="text" 
+            placeholder="输入WiFi名称(仅支持英文)" 
+            maxlength="32"
+          />
+        </view>
+      </view>
+
+      <view class="input-group">
+        <view class="input-label">
+          <image src="/static/image/关闭蜂鸣器.png" class="input-icon" mode="aspectFit" />
+          <text>网络密码</text>
+        </view>
+        <view class="input-wrapper">
+          <input 
+            class="form-input" 
+            bindinput="onWifiPasswordInput" 
+            type="text" 
+            placeholder="输入WiFi密码(仅支持英文)" 
+            password="true"
+            maxlength="64"
+          />
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-section">
+      <button 
+        class="config-btn {{isdisabled ? 'disabled' : ''}}" 
+        bindtap="startWifiConfiguration" 
+        disabled="{{isdisabled}}"
+      >
+        <view class="btn-content">
+          <image wx:if="{{isdisabled}}" src="/static/image/温度.png" class="btn-icon spinning" mode="aspectFit" />
+          <text>{{isdisabled ? '配网中...' : '开始配网'}}</text>
+        </view>
+      </button>
+    </view>
+  </view>
+</view>

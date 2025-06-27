@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/env1/env1",
+    "pages/nfc/nfc",
+    "pages/ctrl/ctrl"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#3ea8f4",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "小车-主界面"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

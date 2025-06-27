@@ -1,0 +1,95 @@
+<view class="home-container">
+  <!-- 顶部欢迎区域 -->
+  <view class="welcome-section">
+    <view class="welcome-content">
+      <view class="app-icon">🚗</view>
+      <view class="welcome-text">
+        <text class="app-title">智能小车</text>
+        <text class="app-subtitle">Smart Car Control</text>
+      </view>
+    </view>
+    <view class="status-indicator">
+      <view class="pulse-dot"></view>
+      <text class="status-text">设备就绪</text>
+    </view>
+  </view>
+
+  <!-- 主要功能卡片 -->
+  <view class="cards-grid">
+    <!-- 控制界面卡片 -->
+    <view class="feature-card control-card" bindtap="goto_ctrl">
+      <view class="card-background">
+        <view class="card-icon">🎮</view>
+      </view>
+      <view class="card-content">
+        <view class="card-title">控制界面</view>
+        <view class="card-description">远程控制小车运动方向</view>
+        <view class="card-features">
+          <text class="feature-tag">方向控制</text>
+          <text class="feature-tag">速度调节</text>
+          <text class="feature-tag">模式切换</text>
+        </view>
+      </view>
+      <view class="card-arrow">→</view>
+    </view>
+
+    <!-- 环境监测卡片 -->
+    <view class="feature-card environment-card" bindtap="goto_env">
+      <view class="card-background">
+        <view class="card-icon">🌡️</view>
+      </view>
+      <view class="card-content">
+        <view class="card-title">环境监测</view>
+        <view class="card-description">实时监测环境数据</view>
+        <view class="card-features">
+          <text class="feature-tag">温湿度</text>
+          <text class="feature-tag">光照强度</text>
+          <text class="feature-tag">距离检测</text>
+        </view>
+      </view>
+      <view class="card-arrow">→</view>
+    </view>
+
+    <!-- NFC配网卡片 -->
+    <view class="feature-card nfc-card" bindtap="goto_nfc">
+      <view class="card-background">
+        <view class="card-icon">📱</view>
+      </view>
+      <view class="card-content">
+        <view class="card-title">NFC配网</view>
+        <view class="card-description">快速配置WiFi连接</view>
+        <view class="card-features">
+          <text class="feature-tag">一键配网</text>
+          <text class="feature-tag">安全连接</text>
+        </view>
+      </view>
+      <view class="card-arrow">→</view>
+    </view>
+
+    <!-- 设置卡片 -->
+    <view class="feature-card settings-card" bindtap="goto_settings">
+      <view class="card-background">
+        <view class="card-icon">⚙️</view>
+      </view>
+      <view class="card-content">
+        <view class="card-title">系统设置</view>
+        <view class="card-description">个性化配置选项</view>
+        <view class="card-features">
+          <text class="feature-tag">连接设置</text>
+          <text class="feature-tag">主题切换</text>
+        </view>
+      </view>
+      <view class="card-arrow">→</view>
+    </view>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="bottom-decoration">
+    <view class="decoration-line"></view>
+    <view class="decoration-dots">
+      <view class="dot"></view>
+      <view class="dot"></view>
+      <view class="dot"></view>
+    </view>
+  </view>
+</view>

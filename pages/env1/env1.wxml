@@ -1,0 +1,125 @@
+<view class="dashboard-container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-header">
+    <view class="nav-title">
+      <view class="title-icon">🌡️</view>
+      <text class="title-text">环境监测</text>
+    </view>
+    <view class="nav-actions">
+      <view class="connection-status {{inputValue ? 'connected' : 'disconnected'}}">
+        <view class="status-dot"></view>
+        <text class="status-text">{{inputValue ? '已连接' : '未连接'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- IP地址输入区域 -->
+  <view class="ip-section">
+    <view class="ip-container">
+      <view class="ip-icon">🌐</view>
+      <input class="ip-input" 
+             type="text"
+             placeholder="输入小车IP地址" 
+             bindinput="onchange_setcarIP"
+             value="{{inputValue}}"
+             placeholder-style="color: rgba(255,255,255,0.6)" />
+      <view class="ip-indicator {{inputValue ? 'active' : ''}}"></view>
+    </view>
+  </view>
+
+  <!-- 环境数据仪表盘 -->
+  <view class="sensors-grid">
+    <!-- 温度传感器 -->
+    <view class="sensor-card temperature">
+      <view class="sensor-header">
+        <view class="sensor-icon">🌡️</view>
+        <text class="sensor-title">温度</text>
+      </view>
+      <view class="sensor-content">
+        <view class="sensor-value">{{temp}}</view>
+        <view class="sensor-unit">°C</view>
+      </view>
+      <view class="sensor-progress">
+        <view class="progress-bar" style="width: {{(temp/50)*100}}%"></view>
+      </view>
+    </view>
+
+    <!-- 湿度传感器 -->
+    <view class="sensor-card humidity">
+      <view class="sensor-header">
+        <view class="sensor-icon">💧</view>
+        <text class="sensor-title">湿度</text>
+      </view>
+      <view class="sensor-content">
+        <view class="sensor-value">{{humi}}</view>
+        <view class="sensor-unit">%</view>
+      </view>
+      <view class="sensor-progress">
+        <view class="progress-bar" style="width: {{humi}}%"></view>
+      </view>
+    </view>
+
+    <!-- 光照传感器 -->
+    <view class="sensor-card light">
+      <view class="sensor-header">
+        <view class="sensor-icon">☀️</view>
+        <text class="sensor-title">光照</text>
+      </view>
+      <view class="sensor-content">
+        <view class="sensor-value">{{ps}}</view>
+        <view class="sensor-unit">Lux</view>
+      </view>
+      <view class="sensor-progress">
+        <view class="progress-bar" style="width: {{(ps/1000)*100}}%"></view>
+      </view>
+    </view>
+
+    <!-- 红外传感器 -->
+    <view class="sensor-card infrared">
+      <view class="sensor-header">
+        <view class="sensor-icon">🔴</view>
+        <text class="sensor-title">红外</text>
+      </view>
+      <view class="sensor-content">
+        <view class="sensor-value">{{ir}}</view>
+        <view class="sensor-unit">IR</view>
+      </view>
+      <view class="sensor-progress">
+        <view class="progress-bar" style="width: {{(ir/100)*100}}%"></view>
+      </view>
+    </view>
+
+    <!-- 接近传感器 -->
+    <view class="sensor-card proximity">
+      <view class="sensor-header">
+        <view class="sensor-icon">📡</view>
+        <text class="sensor-title">接近</text>
+      </view>
+      <view class="sensor-content">
+        <view class="sensor-value">{{als}}</view>
+        <view class="sensor-unit">cm</view>
+      </view>
+      <view class="sensor-progress">
+        <view class="progress-bar" style="width: {{(als/50)*100}}%"></view>
+      </view>
+    </view>
+
+    <!-- 返回按钮 -->
+    <view class="sensor-card back-button">
+      <view class="back-content" bindtap="gobackToHome">
+        <view class="back-icon">🏠</view>
+        <text class="back-text">返回主页</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 实时数据流动画 -->
+  <view class="data-stream">
+    <view class="stream-line"></view>
+    <view class="stream-dots">
+      <view class="dot"></view>
+      <view class="dot"></view>
+      <view class="dot"></view>
+    </view>
+  </view>
+</view>
